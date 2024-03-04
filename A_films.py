@@ -7286,7 +7286,66 @@ html_doc = """
 </body>
 </html>"""
 
+
 soup = BeautifulSoup(html_doc, 'html.parser')
 
-print(soup.get_text("\n", strip=True))
+# Reads the Curzon HTML doc and gets all pieces of text from it
+def string_films():
+  string = soup.get_text("\n", strip=True)
+  print("Films HTML text processed")
+  return string
 
+
+string_films = string_films()
+
+films_list = []
+
+
+def create_film_list():
+  string_line = string_films.split("\n")
+  films_list.extend(string_line)
+  print("Film list created")
+  return string_line
+  
+  
+films_list = create_film_list()
+films_list = films_list[10:-21]
+
+
+"""
+def trim_list():
+  # Trim extra website info from the list of films
+  films_list = films_list[10:-21]
+  # print(films_list)
+  return films_list
+
+
+trim_list()
+"""
+
+# Create a dictionary containing only film names and lengths
+films_dict = {}
+
+def create_film_dict():
+  for i in range(0, len(films_list) - 1, 2):
+    film_title = films_list[i]
+    duration = films_list[i + 1]
+    films_dict[film_title] = duration
+  print("Film dictionary created")
+
+
+def print_summary():
+  # Print header
+  print(f"{'\nFilm title':<40} {'Length'}")
+  print('-' * 50)
+
+  # Print films and durations
+  for film_title, duration in films_dict.items():
+      print(f"{film_title:<40} {duration}")
+
+  # Optional: Print a line to separate the output
+  print('-' * 50)
+
+ 
+create_film_dict()
+print_summary()
