@@ -7336,12 +7336,12 @@ def create_film_dict():
 
 def print_summary():
   # Print header
-  print(f"{'\nFilm title':<40} {'Length'}")
+  print(f"{'\nFilm title':<60} {'Length'}")
   print('-' * 50)
 
   # Print films and durations
   for film_title, duration in films_dict.items():
-      print(f"{film_title:<40} {duration}")
+      print(f"{film_title:<60} {duration}")
 
   # Optional: Print a line to separate the output
   print('-' * 50)
