@@ -122,18 +122,21 @@ def create_film_dict():
     for i in range(0, len(films_list) - 1, 2):
         film_title = films_list[i]
         duration = films_list[i + 1]
-        films_dict[film_title] = duration
+        films_dict[i] = {'title': film_title, 'duration': duration}
     print("Film dictionary created")
+    
 
 def print_summary():
     """Prints a summary of films and their durations."""
     print(f"{'\nIndex':<10} {'\nFilm title':<60} {'Length'}")
     print('-' * 80)
 
-    for index, (film_title, duration) in enumerate(films_dict.items(), start=1):
-        print(f"{index:<10} {film_title:<60} {duration}")
+    for index, (ref, film) in enumerate(films_dict.items(), start=1):
+        # print(f"{index:<10}", film)
+        print(f"{index:<10} {ref:<10} {film.title:<60} {film.duration}")
 
     print('-' * 80)
 
 create_film_dict()
+# print(films_dict)
 print_summary()
