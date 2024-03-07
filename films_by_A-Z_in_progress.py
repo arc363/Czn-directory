@@ -131,9 +131,10 @@ def print_summary():
     print(f"{'\nIndex':<10} {'\nFilm title':<60} {'Length'}")
     print('-' * 80)
 
-    for index, (ref, film) in enumerate(films_dict.items(), start=1):
+    for index, item in enumerate(films_dict.items(), start=1):
         # print(f"{index:<10}", film)
-        print(f"{index:<10} {ref:<10} {film.title:<60} {film.duration}")
+        film = item[1]
+        print(f"{index:<10} {item[0]:<10} {film["title"]:<60} {film["duration"]}")
 
     print('-' * 80)
 
